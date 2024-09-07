@@ -7,6 +7,12 @@ letters_to_numbers = { 'A': 0, 'B': 1, 'C': 2, 'D': 3, 'E': 4, 'F ': 5, 'G': 6, 
 
 def print_board(board):
     print('  A B C D E F H')
+    print(' --------------')
+    row_number = 1
+    for row in board:
+        print("%d|%s" % (row_number, "|".join(row)))
+        row_number += 1
+        #For each row iterated a seporator is added 
 
 def create_ships():
     pass
