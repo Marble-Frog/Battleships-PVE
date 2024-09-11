@@ -49,7 +49,7 @@ def get_ship_location():
     
     return int(row) - 1, letters_to_numbers[column]
 
-# By looping through the board spaces, when a ship is found
+# By looping through the board spaces, when a X is found the counter goes up, possible overlapping bug 
 def count_hit_ships(board):
     count = 0
     for row in board:
@@ -64,8 +64,6 @@ create_ships(hidden_board)
 # Initialize game parameters
 turns = 10
 
-# Print initial state of the boards
-print("Hidden Board:")
-print_board(hidden_board)
+# Print initial state of the board
 print("\nGuess Board:")
 print_board(guess_board)
