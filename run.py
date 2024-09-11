@@ -36,6 +36,7 @@ def get_ship_location():
     while column not in 'ABCDEFGH':
         print('Please enter a valid column')
         column = input('Please enter a ship column A-H').upper()
+    return int(row) - 1, letters_to_numbers[column]
 
         """
         Set the ship row and column value, if the value doesnt match what the input is
