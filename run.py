@@ -25,10 +25,10 @@ def print_board(board):
         print(f"{row_number}|{'|'.join(row)}")
         row_number += 1
 
-"""
-Creates 5 ships and places them randomly on the board
-If a ship is already placed there the function will loop until it finds an empty spot
-"""
+
+# Creates 5 ships and places them randomly on the board
+# If a ship is already placed there the function will loop until it finds an empty spot
+
 def create_ships(board):
     for _ in range(5):
         ship_row, ship_column = randint(0, 7), randint(0, 7)
@@ -36,17 +36,23 @@ def create_ships(board):
             ship_row, ship_column = randint(0, 7), randint(0, 7)
         board[ship_row][ship_column] = "X"
 
+    
 def get_ship_location():
+    
+    # Askes the player for their row guess
     row = input('Please enter a ship row (1-8): ')
     while row not in '12345678':
         print('Please enter a valid row.')
         row = input('Please enter a ship row (1-8): ')
     
+    # Askes the player for their row guess
     column = input('Please enter a ship column (A-H): ').upper()
     while column not in 'ABCDEFGH':
         print('Please enter a valid column.')
         column = input('Please enter a ship column (A-H): ').upper()
     
+    # Takes the row guess and decreases its value so it matches the list
+    # Changes the column guess to number and returns the data value of the players guess 
     return int(row) - 1, letters_to_numbers[column]
 
 # By looping through the board spaces, when a X is found the counter goes up, possible overlapping bug 
