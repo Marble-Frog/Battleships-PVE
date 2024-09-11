@@ -24,11 +24,12 @@ def print_board(board):
         #For each row iterated a seporator is added 
 
 
-def create_ships():
-    for ship in range(5):
-        ship_row, ship_column = randint(0,7) , randint(0,7)
-        while board [ship_row][ship_column] == "X":
-            ship_row, ship_column = radint(0,7) , randint(0,7)
+def create_ships(board):
+    for _ in range(5):
+        ship_row, ship_column = randint(0, 7), randint(0, 7)
+        while board[ship_row][ship_column] == "X":
+            ship_row, ship_column = randint(0, 7), randint(0, 7)
+        board[ship_row][ship_column] = "X"
 
 
 def get_ship_location():
