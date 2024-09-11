@@ -23,7 +23,7 @@ def print_board(board):
     row_number = 1
     for row in board:
         print(f"{row_number}|{'|'.join(row)}")
-        row_number += 2
+        row_number += 1
 
 
 # Creates 5 ships and places them randomly on the board
