@@ -43,5 +43,13 @@ def get_ship_location():
         asking for, the question will be looped again with the prompt changing slightly
         """
 
-def count_hit_ships():
-    pass
+def count_hit_ships(board):
+    count = 0
+    for row in board:
+        for column in row 
+            if column == 'X'
+                count += 1
+    return count
+
+
+
