@@ -73,6 +73,7 @@ def player_guess():
     else 
         print("Miss! :/")
         guess_board[row][column] == "-"
+
 # Create ships on the hidden board
 create_ships(hidden_board)
 
