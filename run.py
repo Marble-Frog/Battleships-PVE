@@ -66,8 +66,11 @@ def count_hit_ships(board):
 
 
 def player_guess():
-    row, collum = get_ship_location()
-    if hidden_board[row][column] == "X":
+    row, column = get_ship_location()
+    if guess_board[row][column] in ["X","-"]:
+        print("You've already guessed here silly")
+    
+    elif hidden_board[row][column] == "X":
         print("Hit! :3")
         guess_board[row][column] = "X"
     else: 
