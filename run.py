@@ -8,12 +8,13 @@
 
 from random import randint
 
+#Defines the board and mapping
 hidden_board = [[' '] * 8 for _ in range(8)]
 guess_board = [[' '] * 8 for _ in range(8)]
 letters_to_numbers = {'A': 0, 'B': 1, 'C': 2, 'D': 3, 'E': 4, 'F': 5, 'G': 6, 'H': 7}
-    #Defines the board and mapping
 
 
+#For each row iterated a seporator is added 
 def print_board(board):
     print('  A B C D E F G H')
     print(' ---------------')
@@ -21,8 +22,11 @@ def print_board(board):
     for row in board:
         print(f"{row_number}|{'|'.join(row)}")
         row_number += 1
-        #For each row iterated a seporator is added 
 
+"""
+Creates 5 ships and places them randomly on the board
+If a ship is already placed there the funtion will loop until it finds a empty spot
+"""
 
 def create_ships(board):
     for _ in range(5):
@@ -49,6 +53,7 @@ def get_ship_location():
         asking for, the question will be looped again with the prompt changing slightly
         """
 
+# By looping through the board spaces, when a ship is found
 
 def count_hit_ships(board):
     count = 0
@@ -58,12 +63,15 @@ def count_hit_ships(board):
                 count += 1
     return count
 
-    """
-    By looping through the board and columns and searching for X
-    when an X is found the count increases by one
-    """
 
+# Create ships on the hidden board
+create_ships(hidden_board)
 
-create_ships(HIDDEN_BOARD)
+# Initialize game parameters
 turns = 10
-print(HIDDEN_BOARD, GUESSBOARD)
+
+# Print initial state of the boards
+print("Hidden Board:")
+print_board(hidden_board)
+print("\nGuess Board:")
+print_board(guess_board)
