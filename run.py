@@ -23,16 +23,24 @@ def print_board(board):
 
 def create_ships():
     for ship in range(5):
-        ship_row, ship_collumn = randint(0,7) , randint(0,7)
-        while board [ship_row][ship_collumn] == "X":
-            ship_row, ship_collumn = radint(0,7) , randint(0,7)
+        ship_row, ship_column = randint(0,7) , randint(0,7)
+        while board [ship_row][ship_column] == "X":
+            ship_row, ship_column = radint(0,7) , randint(0,7)
 
 def get_ship_location():
     row = input('Please enter a ship row 1-8')
     while row not in '12345678':
         print('Please enter a valid row')
-        row = input('please enter a ship collumn A-H').upper()
-        #set ship location by inputting a row and collumn 
+        row = input('please enter a ship row 1-8')
+    column = input('Please enter a ship column A-H').upper()
+    while column not in 'ABCDEFGH':
+        print('Please enter a valid column')
+        column = input('Please enter a ship column A-H').upper()
+
+        """
+        Set the ship row and column value, if the value doesnt match what the input is
+        asking for, the question will be looped again with the prompt changing slightly
+        """
 
 def count_hit_ships():
     pass
