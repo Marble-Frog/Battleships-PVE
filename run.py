@@ -8,9 +8,11 @@
 
 from random import randint
 
-hidden_board = [[''] * 8 for x in range(8) ]
-guess_board = [[''] * 8 for x in range(8) ]
-letters_to_numbers = { 'A': 0, 'B': 1, 'C': 2, 'D': 3, 'E': 4, 'F ': 5, 'G': 6, 'H': 7}
+hidden_board = [[' '] * 8 for _ in range(8)]
+guess_board = [[' '] * 8 for _ in range(8)]
+letters_to_numbers = {'A': 0, 'B': 1, 'C': 2, 'D': 3, 'E': 4, 'F': 5, 'G': 6, 'H': 7}
+    #Defines the board and mapping
+
 
 def print_board(board):
     print('  A B C D E F H')
@@ -21,11 +23,13 @@ def print_board(board):
         row_number += 1
         #For each row iterated a seporator is added 
 
+
 def create_ships():
     for ship in range(5):
         ship_row, ship_column = randint(0,7) , randint(0,7)
         while board [ship_row][ship_column] == "X":
             ship_row, ship_column = radint(0,7) , randint(0,7)
+
 
 def get_ship_location():
     row = input('Please enter a ship row 1-8')
@@ -43,6 +47,7 @@ def get_ship_location():
         asking for, the question will be looped again with the prompt changing slightly
         """
 
+
 def count_hit_ships(board):
     count = 0
     for row in board:
@@ -57,3 +62,6 @@ def count_hit_ships(board):
     """
 
 
+create_ships(HIDDEN_BOARD)
+turns = 10
+print(HIDDEN_BOARD, GUESSBOARD)
