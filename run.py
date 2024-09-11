@@ -66,13 +66,13 @@ def count_hit_ships(board):
 
 
 def player_guess():
-    row, collum = get_ship_location()3
+    row, collum = get_ship_location()
     if hidden_board[row][column] == "X":
         print("Hit! :3")
-        guess_board[row][column] == "X"
+        guess_board[row][column] = "X"
     else 
         print("Miss! :/")
-        guess_board[row][column] == "-"
+        guess_board[row][column] = "-"
 
 # Create ships on the hidden board
 create_ships(hidden_board)
