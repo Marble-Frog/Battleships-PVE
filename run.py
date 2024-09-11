@@ -28,7 +28,11 @@ def create_ships():
             ship_row, ship_collumn = radint(0,7) , randint(0,7)
 
 def get_ship_location():
-    pass
+    row = input('Please enter a ship row 1-8')
+    while row not in '12345678':
+        print('Please enter a valid row')
+        row = input('please enter a ship collumn A-H').upper()
+        #set ship location by inputting a row and collumn 
 
 def count_hit_ships():
     pass
