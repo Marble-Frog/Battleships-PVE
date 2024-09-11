@@ -51,5 +51,9 @@ def count_hit_ships(board):
                 count += 1
     return count
 
+    """
+    By looping through the board and columns and searching for X
+    when an X is found the count increases by one
+    """
 
 
