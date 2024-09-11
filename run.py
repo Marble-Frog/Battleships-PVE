@@ -19,7 +19,7 @@ letters_to_numbers = {'A': 0, 'B': 1, 'C': 2, 'D': 3, 'E': 4, 'F': 5, 'G': 6, 'H
 # For each row iterated a separator is added
 def print_board(board):
     print('  A B C D E F G H')
-    print(' ---------------')
+    print(' -----------------')
     row_number = 1
     for row in board:
         print(f"{row_number}|{'|'.join(row)}")
@@ -45,7 +45,7 @@ def get_ship_location():
         print('Please enter a valid row.')
         row = input('Please enter a ship row (1-8): ')
     
-    # Askes the player for their row guess
+    # Askes the player for their column guess
     column = input('Please enter a ship column (A-H): ').upper()
     while column not in 'ABCDEFGH':
         print('Please enter a valid column.')
@@ -64,6 +64,15 @@ def count_hit_ships(board):
                 count += 1
     return count
 
+
+def player_guess():
+    row, collum = get_ship_location()3
+    if hidden_board[row][column] == "X":
+        print("Hit! :3")
+        guess_board[row][column] == "X"
+    else 
+        print("Miss! :/")
+        guess_board[row][column] == "-"
 # Create ships on the hidden board
 create_ships(hidden_board)
 
@@ -71,5 +80,7 @@ create_ships(hidden_board)
 turns = 10
 
 # Print initial state of the board
+print("Hidden Board (for testing purposes):")
+print_board(hidden_board)  # This will display the hidden board
 print("\nGuess Board:")
 print_board(guess_board)
