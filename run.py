@@ -70,7 +70,7 @@ def player_guess():
     if hidden_board[row][column] == "X":
         print("Hit! :3")
         guess_board[row][column] = "X"
-    else 
+    else: 
         print("Miss! :/")
         guess_board[row][column] = "-"
 
