@@ -33,16 +33,17 @@ def create_ships(board):
 
 
 def get_ship_location():
-    row = input('Please enter a ship row 1-8')
+    row = input('Please enter a ship row (1-8): ')
     while row not in '12345678':
-        print('Please enter a valid row')
-        row = input('please enter a ship row 1-8')
-    column = input('Please enter a ship column A-H').upper()
+        print('Please enter a valid row.')
+        row = input('Please enter a ship row (1-8): ')
+    
+    column = input('Please enter a ship column (A-H): ').upper()
     while column not in 'ABCDEFGH':
-        print('Please enter a valid column')
-        column = input('Please enter a ship column A-H').upper()
+        print('Please enter a valid column.')
+        column = input('Please enter a ship column (A-H): ').upper()
+    
     return int(row) - 1, letters_to_numbers[column]
-
         """
         Set the ship row and column value, if the value doesnt match what the input is
         asking for, the question will be looped again with the prompt changing slightly
