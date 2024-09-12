@@ -63,13 +63,14 @@ def count_remaining_ships(board):
                 count += 1
     return count
 
-def play_game():
+def play_game(): 
     """
     Starts and manages the Battleship game loop.
 
-    Initializes the game, handles player inputs, updates game boards,
-    and manages the remaining number of turns. Continues until all ships 
-    are hit or the player runs out of turns.
+    Initializes the game, handles player inputs, 
+    updates game boards,and manages the remaining number
+    of turns. Continues until all ships are hit or the player
+    runs out of turns.
     """
     remaining_turns = 16
 
