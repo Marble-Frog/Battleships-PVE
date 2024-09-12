@@ -63,15 +63,14 @@ def count_remaining_ships(board):
                 count += 1
     return count
 
-
 def play_game():
     # Create ships on the hidden board
-    turns = 16
+    remaining_turns = 16
 
     # Create ships on the hidden board
     create_ships(hidden_board)
-    for turn in range(turns):
-        print(f"\nTurn {turn + 1}")
+    for turn in range(remaining_turns, 0, -1):  # Start at 16 and count down to 1
+        print(f"\nTurn {turn}")  # Display turn number, counting down from 16
         print_board(guess_board)
 
         try:
