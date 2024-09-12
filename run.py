@@ -5,10 +5,8 @@
 #X for placing and hit battleships
 #' ' for avalible spaces
 #'-' for missed shot
-   # The code to test
 
-
-    
+ 
 from random import randint
 
 # Defines the board and mapping
@@ -25,10 +23,8 @@ def print_board(board):
         print(f"{row_number}|{'|'.join(row)}|")
         row_number += 1
 
-
 # Creates 5 ships and places them randomly on the board
-# If a ship is already placed there the function will loop until it finds an empty spot
-
+# If a ship is already placed there it will reroll
 def create_ships(board):
     for _ in range(5):
         ship_row, ship_column = randint(0, 7), randint(0, 7)
@@ -36,21 +32,20 @@ def create_ships(board):
             ship_row, ship_column = randint(0, 7), randint(0, 7)
         board[ship_row][ship_column] = "X"
 
-    
+
 def get_ship_location():
-    
     # Ask the player for their row guess
     row = input('Please enter a ship row (1-8): ')
     while row not in '12345678':
         print('Please enter a valid row.')
         row = input('Please enter a ship row (1-8): ')
-    
+
     # Ask the player for their column guess
     column = input('Please enter a ship column (A-H): ').upper()
     while column not in 'ABCDEFGH':
         print('Please enter a valid column.')
         column = input('Please enter a ship column (A-H): ').upper()
-    
+
     # Takes the row guess and decreases its value so it matches the list
     # Changes the column guess to number and returns the data value of the player's guess 
     return int(row) - 1, letters_to_numbers[column]
@@ -66,18 +61,16 @@ def count_remaining_ships(board):
 
 
 def play_game():
-   
+
     # Create ships on the hidden board
     turns = 16
-    
+
     # Create ships on the hidden board
     create_ships(hidden_board)
-    
-   
     for turn in range(turns):
         print(f"\nTurn {turn + 1}")
         print_board(guess_board)
-        
+
         try:
             row, column = get_ship_location()
             if guess_board[row][column] in ["X", "-"]:
@@ -87,14 +80,15 @@ def play_game():
                 print("Hit! :3")
                 guess_board[row][column] = "X"
                 hidden_board[row][column] = " "  # Mark the ship as hit
+
             else:
                 print("Miss! :/")
                 guess_board[row][column] = "-"
-            
+
             # Count remaining ships after each guess
             remaining_ships = count_remaining_ships(hidden_board)
             print(f"Remaining ships: {remaining_ships}")
-        
+
             if remaining_ships == 0:
                 print("Congratulations! You've won!")
                 break
@@ -102,7 +96,7 @@ def play_game():
             print(f"Invalid input or error occurred: {e}")
         except Exception as e:
             print(f"An unexpected error occurred: {e}")
-    
+
     else:
         print("Game Over! You've run out of turns.")
 
