@@ -18,7 +18,7 @@ letters_to_numbers = {
 
 
 # For each row iterated, a separator is added
-def print_board(board):  
+def print_board(board):
     print('  A B C D E F G H')
     print(' -----------------')
     row_number = 1
@@ -37,7 +37,7 @@ def create_ships(board):
         board[ship_row][ship_column] = "X"
 
 
-def get_ship_location():  
+def get_ship_location():
     # Ask the player for their row guess
     row = input('Please enter a ship row (1-8): ')
     while row not in '12345678':
@@ -55,7 +55,7 @@ def get_ship_location():
 
 
 # By looping through the board spaces, when an 'X' is found the counter goes up 
-def count_remaining_ships(board):  
+def count_remaining_ships(board):
     count = 0
     for row in board:
         for column in row:
@@ -64,13 +64,12 @@ def count_remaining_ships(board):
     return count
 
 
-def play_game():  
+def play_game():
     # Create ships on the hidden board
     turns = 16
 
     # Create ships on the hidden board
     create_ships(hidden_board)
-    
     for turn in range(turns):
         print(f"\nTurn {turn + 1}")
         print_board(guess_board)
@@ -108,4 +107,3 @@ def play_game():
 
 # Start the game
 play_game()
-
