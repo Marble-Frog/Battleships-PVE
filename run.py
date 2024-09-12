@@ -54,7 +54,7 @@ def get_ship_location():
     return int(row) - 1, letters_to_numbers[column]
 
 
-# By looping through the board spaces, when an 'X' is found the counter goes up 
+# By looping through the board spaces, when an 'X' is found the counter goes up
 def count_remaining_ships(board):
     count = 0
     for row in board:
