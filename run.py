@@ -102,7 +102,10 @@ def play_game():
 
 
 # Print initial state of the board
-print("Hidden Board (for testing purposes):")
-print_board(hidden_board)  # This will display the hidden board
+print("\nHidden Board (for testing purposes):")
+print_board(hidden_board)
 print("\nGuess Board:")
 print_board(guess_board)
+
+# Start the game
+play_game()
