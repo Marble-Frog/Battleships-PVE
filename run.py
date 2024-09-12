@@ -105,12 +105,5 @@ def play_game():
     else:
         print("Game Over! You've run out of turns.")
 
-
-# Print initial state of the board
-print("\nHidden Board (for testing purposes):")
-print_board(hidden_board)
-print("\nGuess Board:")
-print_board(guess_board)
-
 # Start the game
 play_game()
