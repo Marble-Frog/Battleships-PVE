@@ -77,24 +77,28 @@ def player_guess():
         print("Miss! :/")
         guess_board[row][column] = "-"
 
-for turns in range(turns)
-    print(f"\nTurn {turn + 1}")
-    player_guess()
-    print("\nGuess Board:")
-    print_board(guess_board)
-
-    remaining_ships = count_hit_ships(hidden_board)
-    if remaining ships == 0:
-        print("Congradulations you won!")
-        break
-    else:
-        print("GameOver! you ran out of turns.")
-
 # Create ships on the hidden board
 create_ships(hidden_board)
 
 # Initialize game parameters
 turns = 10
+
+# Loops through the game until the ammount of turns matches the game parameters
+for turn in range(turns):
+    print(f"\nTurn {turn + 1}")
+    player_guess()
+    print("\nGuess Board:")
+    print_board(guess_board)
+
+    #counts the ammount of remaining ships, if all ships hit game finishes
+    #If some ships are left and the turns run out game finishes
+    remaining_ships = count_hit_ships(hidden_board)
+    if remaining_ships == 0:
+        print("Congratulations you won!")
+        break
+    else:
+        print("GameOver! you ran out of turns.")
+
 
 # Print initial state of the board
 print("Hidden Board (for testing purposes):")
