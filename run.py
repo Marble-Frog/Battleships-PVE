@@ -65,39 +65,40 @@ def count_hit_ships(board):
     return count
 
 
-def player_guess():
-    row, column = get_ship_location()
-    if guess_board[row][column] in ["X","-"]:
-        print("You've already guessed here silly")
+def play_game():
+    # Create ships on the hidden board
+    turns = 10
+    # Create ships on the hidden board
+    create_ships(hidden_board)
+
+    for turn in range(turns):
+        print(f"\nTurn {turn + 1}")
+        print_board(guess_board)
+        
+        try:
+            row, column = get_ship_location()
+            if guess_board[row][column] in ["X", "-"]:
+                print("You've already guessed here, silly!")
+
+            elif hidden_board[row][column] == "X":
+                print("Hit! :3")
+                guess_board[row][column] = "X"
+            else:
+                print("Miss! :/")
+                guess_board[row][column] = "-"
+            
+            # Count remaining ships after each guess
+            remaining_ships = count_hit_ships(hidden_board)
+            if remaining_ships == 0:
+                print("Congratulations! You've won!")
+                break
+        except (IndexError, ValueError) as e:
+            print(f"Invalid input or error occurred: {e}")
+        except Exception as e:
+            print(f"An unexpected error occurred: {e}")
     
-    elif hidden_board[row][column] == "X":
-        print("Hit! :3")
-        guess_board[row][column] = "X"
-    else: 
-        print("Miss! :/")
-        guess_board[row][column] = "-"
-
-# Create ships on the hidden board
-create_ships(hidden_board)
-
-# Initialize game parameters
-turns = 10
-
-# Loops through the game until the ammount of turns matches the game parameters
-for turn in range(turns):
-    print(f"\nTurn {turn + 1}")
-    player_guess()
-    print("\nGuess Board:")
-    print_board(guess_board)
-
-    #counts the ammount of remaining ships, if all ships hit game finishes
-    #If some ships are left and the turns run out game finishes
-    remaining_ships = count_hit_ships(hidden_board)
-    if remaining_ships == 0:
-        print("Congratulations you won!")
-        break
     else:
-        print("GameOver! you ran out of turns.")
+        print("Game Over! You've run out of turns.")
 
 
 # Print initial state of the board
