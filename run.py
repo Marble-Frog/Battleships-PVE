@@ -66,11 +66,14 @@ def count_hit_ships(board):
 
 
 def play_game():
+   
     # Create ships on the hidden board
     turns = 10
+    
     # Create ships on the hidden board
     create_ships(hidden_board)
-
+    
+   
     for turn in range(turns):
         print(f"\nTurn {turn + 1}")
         print_board(guess_board)
@@ -89,6 +92,8 @@ def play_game():
             
             # Count remaining ships after each guess
             remaining_ships = count_hit_ships(hidden_board)
+            print(f"Remaining ships: {5 - remaining_ships}")
+        
             if remaining_ships == 0:
                 print("Congratulations! You've won!")
                 break
