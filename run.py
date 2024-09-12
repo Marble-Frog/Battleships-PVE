@@ -22,7 +22,7 @@ def print_board(board):
     print(' -----------------')
     row_number = 1
     for row in board:
-        print(f"{row_number}|{'|'.join(row)}")
+        print(f"{row_number}|{'|'.join(row)}|")
         row_number += 1
 
 
@@ -39,28 +39,28 @@ def create_ships(board):
     
 def get_ship_location():
     
-    # Askes the player for their row guess
+    # Ask the player for their row guess
     row = input('Please enter a ship row (1-8): ')
     while row not in '12345678':
         print('Please enter a valid row.')
         row = input('Please enter a ship row (1-8): ')
     
-    # Askes the player for their column guess
+    # Ask the player for their column guess
     column = input('Please enter a ship column (A-H): ').upper()
     while column not in 'ABCDEFGH':
         print('Please enter a valid column.')
         column = input('Please enter a ship column (A-H): ').upper()
     
     # Takes the row guess and decreases its value so it matches the list
-    # Changes the column guess to number and returns the data value of the players guess 
+    # Changes the column guess to number and returns the data value of the player's guess 
     return int(row) - 1, letters_to_numbers[column]
 
-# By looping through the board spaces, when a X is found the counter goes up, possible overlapping bug 
-def count_hit_ships(board):
+# By looping through the board spaces, when an 'X' is found the counter goes up 
+def count_remaining_ships(board):
     count = 0
     for row in board:
         for column in row:
-            if column == 'X':
+            if column == 'X':  # Only count unhit ships
                 count += 1
     return count
 
@@ -68,7 +68,7 @@ def count_hit_ships(board):
 def play_game():
    
     # Create ships on the hidden board
-    turns = 10
+    turns = 16
     
     # Create ships on the hidden board
     create_ships(hidden_board)
@@ -86,13 +86,14 @@ def play_game():
             elif hidden_board[row][column] == "X":
                 print("Hit! :3")
                 guess_board[row][column] = "X"
+                hidden_board[row][column] = " "  # Mark the ship as hit
             else:
                 print("Miss! :/")
                 guess_board[row][column] = "-"
             
             # Count remaining ships after each guess
-            remaining_ships = count_hit_ships(hidden_board)
-            print(f"Remaining ships: {5 - remaining_ships}")
+            remaining_ships = count_remaining_ships(hidden_board)
+            print(f"Remaining ships: {remaining_ships}")
         
             if remaining_ships == 0:
                 print("Congratulations! You've won!")
