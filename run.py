@@ -30,7 +30,7 @@ def print_board(board):
 # Creates 5 ships and places them randomly on the board
 # If a ship is already placed there it will reroll
 def create_ships(board):
-    for _ in range(5):
+    for _ in range(50):
         ship_row, ship_column = randint(0, 7), randint(0, 7)
         while board[ship_row][ship_column] == "X":
             ship_row, ship_column = randint(0, 7), randint(0, 7)
