@@ -8,6 +8,7 @@
 
 from random import randint
 
+
 # Defines the board and mapping
 hidden_board = [[' '] * 8 for _ in range(8)]
 guess_board = [[' '] * 8 for _ in range(8)]
@@ -30,7 +31,7 @@ def print_board(board):
 # Creates 5 ships and places them randomly on the board
 # If a ship is already placed there it will reroll
 def create_ships(board):
-    for _ in range(50):
+    for _ in range(5):
         ship_row, ship_column = randint(0, 7), randint(0, 7)
         while board[ship_row][ship_column] == "X":
             ship_row, ship_column = randint(0, 7), randint(0, 7)
@@ -113,3 +114,12 @@ def play_game():
 
 # Start the game
 play_game()
+
+
+
+"""
+Hey I just wanted to apologise for the state
+of this submission and for kinda wasting your
+time. Hopefully the next version will make up
+for it. haha
+"""
