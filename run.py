@@ -9,9 +9,11 @@
 from random import randint
 
 
-# Defines the board and mapping
+
+# Defines the board size and the sizes of the ships
 hidden_board = [[' '] * 8 for _ in range(8)]
 guess_board = [[' '] * 8 for _ in range(8)]
+Ship_Sizes = (2, 3, 3, 4, 5)
 letters_to_numbers = {
     'A': 0, 'B': 1, 'C': 2, 'D': 3,
     'E': 4, 'F': 5, 'G': 6, 'H': 7
@@ -28,14 +30,15 @@ def print_board(board):
         row_number += 1
 
 
-# Creates 5 ships and places them randomly on the board
+# Creates 5 ships with ship_sizes randomly assigns up and sideways to the ship
 # If a ship is already placed there it will reroll
 def create_ships(board):
-    for _ in range(5):
-        ship_row, ship_column = randint(0, 7), randint(0, 7)
-        while board[ship_row][ship_column] == "X":
-            ship_row, ship_column = randint(0, 7), randint(0, 7)
-        board[ship_row][ship_column] = "X"
+    for ship_sizes in Ship_sizes():
+        placed = False
+        while not place:
+            direction = choice("horizontal", "vertical")
+            ship_row, ship_column = randint(0,7), randint(0,7)
+        
 
 
 def get_ship_location():
