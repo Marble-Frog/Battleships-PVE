@@ -33,11 +33,21 @@ def print_board(board):
 # Creates 5 ships with ship_sizes randomly assigns up and sideways to the ship
 # If a ship is already placed there it will reroll
 def create_ships(board):
-    for ship_sizes in Ship_sizes():
+    for ship_sizes in Ship_Sizes:
         placed = False
-        while not place:
-            direction = choice("horizontal", "vertical")
+        while not placed:
+            direction = choice(['horizontal', 'vertical'])
             ship_row, ship_column = randint(0,7), randint(0,7)
+
+            if direction == 'horizontal':
+                if ship_column + ship_sizes <= 8:
+                    if all(board[ship_row][ship_column + i] == ' '
+                    for i in range (ship_sizes)):
+                        for i in range(ship_sizes):
+                            board[ship_row][ship,column + i] == X
+
+
+            else direction = "vertical"
         
 
 
