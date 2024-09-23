@@ -6,8 +6,7 @@
 # ' ' for available spaces
 # '-' for missed shot
 
-from random import randint
-
+from random import randint,choice 
 
 
 # Defines the board size and the sizes of the ships
@@ -33,21 +32,28 @@ def print_board(board):
 # Creates 5 ships with ship_sizes randomly assigns up and sideways to the ship
 # If a ship is already placed there it will reroll
 def create_ships(board):
-    for ship_sizes in Ship_Sizes:
+    for ship_size in Ship_Sizes:
         placed = False
         while not placed:
             direction = choice(['horizontal', 'vertical'])
             ship_row, ship_column = randint(0,7), randint(0,7)
 
             if direction == 'horizontal':
-                if ship_column + ship_sizes <= 8:
-                    if all(board[ship_row][ship_column + i] == ' '
-                    for i in range (ship_sizes)):
-                        for i in range(ship_sizes):
-                            board[ship_row][ship,column + i] == X
+                if ship_column + ship_size <= 8:
+                    if all(board[ship_row][ship_column + i] == ' ' 
+                           for i in range(ship_size)):
+                        for i in range(ship_size):
+                            board[ship_row][ship_column + i] = 'X'
+                        placed = True
 
 
-            else direction = "vertical"
+            else:
+                if ship_row + ship_size <= 8:
+                    if all(board[ship_row + i][ship_column] == ' '
+                            for i in range(ship_size)):
+                        for i in range(ship_size):
+                            board[ship_row + i][ship_column] = 'X'
+                        placed = True
         
 
 
@@ -86,12 +92,12 @@ def play_game():
     of turns. Continues until all ships are hit or the player
     runs out of turns.
     """
-    remaining_turns = 16
+    remaining_turns = 20
 
     # Create ships on the hidden board
     create_ships(hidden_board)
-    for turn in range(remaining_turns, 0, -1):  # Start at 16 and count down to 1
-        print(f"\nTurn {turn}")  # Display turn number, counting down from 16
+    for turn in range(remaining_turns, 0, -1):
+        print(f"\nTurn {turn}")  # Displays the number of turns
         print_board(guess_board)
 
         try:
@@ -128,11 +134,5 @@ def play_game():
 # Start the game
 play_game()
 
-
-
-"""
-Hey I just wanted to apologise for the state
-of this submission and for kinda wasting your
-time. Hopefully the next version will make up
-for it. haha
-"""
+print("\nFinal Hidden Board:")
+print_board(hidden_board)
