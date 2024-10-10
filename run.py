@@ -6,7 +6,7 @@
 # ' ' for available spaces
 # '-' for missed shot
 
-from random import randint,choice 
+from random import randint, choice
 
 
 # Defines the board size and the sizes of the ships
@@ -36,7 +36,7 @@ def create_ships(board):
         placed = False
         while not placed:
             direction = choice(['horizontal', 'vertical'])
-            ship_row, ship_column = randint(0,7), randint(0,7)
+            ship_row, ship_column = randint(0, 7), randint(0, 7)
 
             if direction == 'horizontal':
                 if ship_column + ship_size <= 8:
@@ -49,14 +49,14 @@ def create_ships(board):
 
             else:
                 if ship_row + ship_size <= 8:
-                    if all(board[ship_row + i][ship_column] == ' '
-                            for i in range(ship_size)):
+                    if all(board[ship_row + i][ship_column] == ' ' 
+                        for i in range(ship_size)):
                         for i in range(ship_size):
                             board[ship_row + i][ship_column] = 'X'
                         placed = True
-        
 
 
+# Get player's guess for row and column
 def get_ship_location():
     # Ask the player for their row guess
     row = input('Please enter a ship row (1-8): ')
@@ -73,31 +73,31 @@ def get_ship_location():
     # Converts the player's guess into usable data
     return int(row) - 1, letters_to_numbers[column]
 
-
-# By looping through the board spaces, when an 'X' is found the counter goes up
+# Count how many ships remain unhit
 def count_remaining_ships(board):
     count = 0
     for row in board:
         for column in row:
-            if column == 'X':  # Only count unhit ships
+            if column == 'X': # Only count unhit ships
                 count += 1
     return count
 
-def play_game(): 
+def play_game():
     """
     Starts and manages the Battleship game loop.
-
-    Initializes the game, handles player inputs, 
-    updates game boards,and manages the remaining number
+    Initializes the game, handles player inputs,
+    updates game boards, and manages the remaining number
     of turns. Continues until all ships are hit or the player
     runs out of turns.
     """
     remaining_turns = 20
 
-    # Create ships on the hidden board
+    #Create ships on hidden board
     create_ships(hidden_board)
-    for turn in range(remaining_turns, 0, -1):
-        print(f"\nTurn {turn}")  # Displays the number of turns
+    turns = remaining_turns
+
+    while turns > 0:
+        print(f'\nTurn {remaining_turns - turns + 1}')
         print_board(guess_board)
 
         try:
@@ -113,8 +113,8 @@ def play_game():
             else:
                 print("Miss! :/")
                 guess_board[row][column] = "-"
+                turns -= 1
 
-            # Count remaining ships after each guess
             remaining_ships = count_remaining_ships(hidden_board)
             print(f"Remaining ships: {remaining_ships}")
 
@@ -130,9 +130,8 @@ def play_game():
     else:
         print("Game Over! You've run out of turns.")
 
+    print("\nFinal Hidden Board:")
+    print_board(hidden_board)
 
 # Start the game
 play_game()
-
-print("\nFinal Hidden Board:")
-print_board(hidden_board)
