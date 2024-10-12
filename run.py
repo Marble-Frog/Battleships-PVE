@@ -138,11 +138,11 @@ def play_game():
     print("\nFinal Hidden Board:")
     print_board(hidden_board)
 
-      # Option to restart the game
-        restart = input("Would you like to play again? (yes/no): ").lower()
-        if restart != 'yes':
-            print("Thanks for playing! Goodbye!")
-            break
+    # Option to restart the game
+    restart = input("Would you like to play again? (yes/no): ").lower()
+    if restart != 'yes':
+        print("Thanks for playing! Goodbye!")
+        break
 
 # Start the game
 play_game()
