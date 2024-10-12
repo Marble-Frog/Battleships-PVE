@@ -97,8 +97,13 @@ def play_game():
     turns = remaining_turns
 
     while turns > 0:
-        print(f'\nTurn {remaining_turns - turns + 1}')
+        print(f'\nTurn {turns}')
         print_board(guess_board)
+
+
+        # For testing purposes, print the hidden board
+        print("\nHidden Board (for testing):")
+        print_board(hidden_board)  # This shows the actual ship placements
 
         try:
             row, column = get_ship_location()
@@ -108,7 +113,7 @@ def play_game():
             elif hidden_board[row][column] == "X":
                 print("Hit! :3")
                 guess_board[row][column] = "X"
-                hidden_board[row][column] = " "  # Mark the ship as hit
+                hidden_board[row][column] = "O"  # Mark the ship as hit
 
             else:
                 print("Miss! :/")
@@ -116,7 +121,7 @@ def play_game():
                 turns -= 1
 
             remaining_ships = count_remaining_ships(hidden_board)
-            print(f"Remaining ships: {remaining_ships}")
+            print(f"Remaining Targets : {remaining_ships}")
 
             if remaining_ships == 0:
                 print("Congratulations! You've won!")
@@ -132,6 +137,12 @@ def play_game():
 
     print("\nFinal Hidden Board:")
     print_board(hidden_board)
+
+      # Option to restart the game
+        restart = input("Would you like to play again? (yes/no): ").lower()
+        if restart != 'yes':
+            print("Thanks for playing! Goodbye!")
+            break
 
 # Start the game
 play_game()
